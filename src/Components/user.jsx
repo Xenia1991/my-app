@@ -1,17 +1,21 @@
-import React, {useState} from "react";
-import API from "../api";
+import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
+import Qualities from "./qualities";
+import Bookmark from "./bookmark";
 
-const User = (props) => {
+const User = ({qualities, name, _id, profession, completedMeetings, rate, onDelete}) => {
     return (
         <>
-            <tr className="table-light" key={props._id}>
-                <td> {props.name} </td>
-                <td> {props.qualities.map((quality) => {return <span className={`badge bg-${quality.color} m-1`} key={quality._id}>{` ${quality.name} `}</span>})} </td>
-                <td> {props.profession.name} </td>
-                <td> {props.completedMeetings} </td>
-                 <td> {`${props.rate} /5`} </td>
-                <td> <button className="btn btn-danger" onClick={() => props.onDelete(props._id)}> delete </button></td>
+            <tr className="table-light" key={_id}>
+                 <td> {name} </td>
+                 <td>
+                  < Qualities qualities={qualities}/>
+                </td>
+                <td> {profession.name} </td>
+                <td> {completedMeetings} </td>
+                <td> {`${rate} /5`} </td>
+                <td> <Bookmark /></td>
+                <td> <button className="btn btn-danger" onClick={() => onDelete(_id)}> delete </button></td>
             </tr>
         </>
     )

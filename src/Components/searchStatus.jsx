@@ -1,22 +1,19 @@
 import React from "react";
-import API from "../api";
 import "bootstrap/dist/css/bootstrap.css"
 
-const SearchStatus = () => {
-     const allUsers=API.users.fetchAll();
-     let userNumber = allUsers.length;
-     const lastNumber=userNumber%10;
-     const lastNUmberForhundreds = userNumber%100;
-    
+const SearchStatus = ({length}) => {
+     console.log(length);
+
+     const renderPhrase = (number) => {
+          const lastNumber = Number(number.toString().slice(-1));
+          if (number ===1 || number>4 && number<15) {return "человек тусанет"};
+          if ([2,3,4].indexOf(lastNumber)>0) {return "человека тусанут"};
+          if (lastNumber===1) {return "человек тусанет"}
+          return "человека тусанет"
+     }
+
     return (
-         userNumber===0 ? <h1> <span className="badge bg-danger">никто с тобой не тусанет </span></h1> 
-         : userNumber===1 ? <h1> <span className="badge bg-primary">{userNumber} человек тусанет с тобой сегодня </span></h1> 
-         : (userNumber<=14 && userNumber>=12) ? <h1> <span className="badge bg-primary">{userNumber} человек тусанет с тобой сегодня </span></h1> 
-         : (userNumber<=4 && userNumber>=2) ? <h1> <span className="badge bg-primary">{userNumber} человека тусанет с тобой сегодня </span></h1> 
-         : (lastNUmberForhundreds<=14 && lastNUmberForhundreds>=12) ? <h1><span className="badge bg-primary">{userNumber} человек тусанет с тобой сегодня </span></h1> 
-         : (lastNumber<=4 && lastNumber>=2) ? <h1><span className="badge bg-primary">{userNumber} человека тусанет с тобой сегодня </span></h1> 
-         : (lastNumber===1) ? <h1><span className="badge bg-primary">{userNumber} человек тусанет с тобой сегодня </span></h1> 
-         :  <h1> <span className="badge bg-primary">{userNumber} человек тусанут с тобой сегодня </span></h1>
+          <h2> <span className={"badge bg-"+(length > 0 ? "primary" : "danger")}> {length > 0 ? `${length} ${renderPhrase(length)} с тобой сегодня` : `Никто с тобой не тусанет`}</span></h2>
     )
  }
 
