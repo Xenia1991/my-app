@@ -5,6 +5,7 @@ import SearchStatus from "./searchStatus";
 
 const Users =() => {
     const allUsers=API.users.fetchAll();
+    console.log(allUsers);
     const [users, setUser] = useState(allUsers);
 
     const handleUserChange = (id) => {

@@ -2,11 +2,9 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.css"
 
 const SearchStatus = ({length}) => {
-     console.log(length);
-
      const renderPhrase = (number) => {
           const lastNumber = Number(number.toString().slice(-1));
-          if (number ===1 || number>4 && number<15) {return "человек тусанет"};
+          if (number>4 && number<15) {return "человек тусанет"};
           if ([2,3,4].indexOf(lastNumber)>0) {return "человека тусанут"};
           if (lastNumber===1) {return "человек тусанет"}
           return "человека тусанет"
