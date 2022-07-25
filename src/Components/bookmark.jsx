@@ -17,10 +17,11 @@ const Bookmark = ({_id, bookmark}) => {
               return bookmarkIcon
           }
       }));
+      console.log(bookmarkIcon)
       return bookmarkIcon
     }
 
-    // console.log (bookmarkIcon)
+    console.log (bookmarkIcon)
     return (
     <button onClick={() => handleBookmark(_id)}><i className={bookmarkIcon}></i></button>
     )

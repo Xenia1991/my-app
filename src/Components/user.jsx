@@ -14,7 +14,7 @@ const User = ({qualities, name, _id, profession, completedMeetings, rate, onDele
                 <td> {profession.name} </td>
                 <td> {completedMeetings} </td>
                 <td> {`${rate} /5`} </td>
-                <td> <Bookmark bookmark={bookmark} _id={_id} onChange={onClick}/></td>
+                <td> <Bookmark bookmark={bookmark} _id={_id} onBookmark={() => onClick(_id)}/></td>
                 <td> <button className="btn btn-danger" onClick={() => onDelete(_id)}> delete </button></td>
             </tr>
         </>
