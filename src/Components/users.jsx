@@ -1,23 +1,11 @@
-import React, {useState} from "react";
+import React from "react";
 import User from "./user";
-import API from "../api";
-import SearchStatus from "./searchStatus";
 
-const Users =() => {
-    const allUsers=API.users.fetchAll();
-    console.log(allUsers);
-    const [users, setUser] = useState(allUsers);
-
-    const handleUserChange = (id) => {
-        setUser((prevState) => prevState.filter((user) => user._id !== id));
-    };
+const Users =({users, onDelete}) => {
 
     return (
         <>
-        <SearchStatus 
-        length = {users.length}
-        />
-        <table className="table table-light" hidden = {users.length===0 ? "hidden" : ""}>
+        <table className="table table-light">
             <thead>
                 <tr>
                     <th scope="col">Имя</th>
@@ -34,7 +22,7 @@ const Users =() => {
                 {users.map((user)=> (
                     <User 
                     key = {user._id}
-                    onDelete = {handleUserChange}
+                    onDelete = {onDelete}
                     {...user}
                     />
                 ))}
@@ -45,3 +33,5 @@ const Users =() => {
 };
 
 export default Users;
+
+// hidden = {users.length===0 ? "hidden" : ""
