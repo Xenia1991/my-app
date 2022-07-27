@@ -1,8 +1,8 @@
 import React from "react";
 import User from "./user";
 
-const Users =({users, onDelete}) => {
-
+const Users =({users, ...rest}) => {
+   
     return (
         <>
         <table className="table table-light">
@@ -19,13 +19,14 @@ const Users =({users, onDelete}) => {
             </thead>
             
             <tbody>
-                {users.map((user)=> (
-                    <User 
-                    key = {user._id}
-                    onDelete = {onDelete}
-                    {...user}
+                {users.map((user) => {
+                    return <User 
+                        key = {user._id}
+                        {...rest}
+                        {...user}
                     />
-                ))}
+                    })
+                }
             </tbody>
         </table>
         </>
@@ -33,5 +34,3 @@ const Users =({users, onDelete}) => {
 };
 
 export default Users;
-
-// hidden = {users.length===0 ? "hidden" : ""

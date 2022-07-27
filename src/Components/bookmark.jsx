@@ -1,13 +1,12 @@
-// import React, {useState} from "react";
-// import API from "../api";
+import React, {useState} from "react";
+import API from "../api";
 
-// const Bookmark = ({_id, bookmark}) => {
-   
+const Bookmark = ({bookmark, ...rest}) => {
+    const bookmarkIcon = "bi bi-star" + (bookmark? "-fill" : "");
 
-//     console.log (bookmarkIcon)
-//     return (
-//     <button onClick={() => handleBookmark(_id)}><i className={bookmarkIcon}></i></button>
-//     )
-// };
+    return (
+    <button {...rest}><i className={bookmarkIcon}></i></button>
+    )
+};
 
-// export default Bookmark;
+export default Bookmark;
