@@ -15,6 +15,8 @@ const User = ({
     bookmark,
     onBookmark
 }) => {
+    console.log(_id);
+    console.log(onBookmark);
     return (
         <>
             <tr className="table-light" key={_id}>
@@ -26,20 +28,17 @@ const User = ({
                 <td> {completedMeetings} </td>
                 <td> {`${rate} /5`} </td>
                 <td>
-                    {" "}
                     <Bookmark
                         bookmark={bookmark}
                         onClick={() => onBookmark(_id)}
                     />
                 </td>
                 <td>
-                    {" "}
                     <button
                         className="btn btn-danger"
                         onClick={() => onDelete(_id)}
                     >
-                        {" "}
-                        delete{" "}
+                        delete
                     </button>
                 </td>
             </tr>
