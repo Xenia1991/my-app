@@ -2,10 +2,48 @@ import React from "react";
 import PropTypes from "prop-types";
 import "bootstrap/dist/css/bootstrap.css";
 
-const GroupList = ({ items, valueProperty, contentProperty, onItemSelect, selectedItem }) => {
+const GroupList = ({
+    items,
+    valueProperty,
+    contentProperty,
+    onItemSelect,
+    selectedItem
+}) => {
+    if (!Array.isArray(items)) {
+        return (
+            <ul className="list-group">
+                {Object.keys(items).map((item) => (
+                    <li
+                        className={
+                            "list-group-item" +
+                            (items[item] === selectedItem ? " active" : "")
+                        }
+                        role="button"
+                        key={items[item][valueProperty]}
+                        onClick={() => onItemSelect(items[item])}
+                    >
+                        {" "}
+                        {items[item][contentProperty]}{" "}
+                    </li>
+                ))}
+            </ul>
+        );
+    }
     return (
         <ul className="list-group">
-            {Object.keys(items).map(item => (<li className={"list-group-item" + (items[item] === selectedItem ? " active" : "")} role="button" key={items[item][valueProperty]} onClick={() => onItemSelect(items[item])}> {items[item][contentProperty]} </li>))}
+            {items.map((item) => (
+                <li
+                    key={item[valueProperty]}
+                    className={
+                        "list-group-item" +
+                        (item === selectedItem ? " active" : "")
+                    }
+                    onClick={() => onItemSelect(item)}
+                    role="button"
+                >
+                    {item[contentProperty]}
+                </li>
+            ))}
         </ul>
     );
 };
