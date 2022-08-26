@@ -1,7 +1,7 @@
 import React from "react";
-import "bootstrap/dist/css/bootstrap.css";
+import PropTypes from "prop-types";
 
-const Qualities = ({ qualities }) => {
+const QualitiesList = ({ qualities }) => {
     const userQuality = qualities.map((quality) => {
         return (
             <span className={`badge bg-${quality.color} m-1`} key={quality._id}>
@@ -12,4 +12,8 @@ const Qualities = ({ qualities }) => {
     return userQuality;
 };
 
-export default Qualities;
+QualitiesList.propTypes = {
+    qualities: PropTypes.array
+};
+
+export default QualitiesList;
